@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    background-color: #6B3D52;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    text-align: center;
+}
+
+.description {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(33.333% - 20px); /* Tres tarjetas por fila con margen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100px; /* Ancho fijo para todas las imágenes */
+    height: 100px; /* Altura fija para todas las imágenes */
+    border-radius: 50%; /* Hace que las imágenes sean circulares */
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente dentro del contenedor */
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px); /* Dos tarjetas por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: calc(100% - 20px); /* Una tarjeta por fila en pantallas pequeñas */
+    }
+}

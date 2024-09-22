@@ -1,0 +1,40 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/views/index.html"
+      },
+      {
+        "source": "/profile",
+        "destination": "/views/profile.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/views/dashboard.html"
+      },
+      {
+        "source": "/soporte",
+        "destination": "/views/soporte.html"
+      },
+      {
+        "source": "/Proyectos",
+        "destination": "/views/ListaProyectos.html"
+      },
+      {
+        "source": "**",
+        "destination": "/views/404.html"
+      }
+    ]
+  }
+}

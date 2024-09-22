@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../styles/profile.css">
+    <script type="module" src="../scripts/info.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-container">
+        <div id="loading-ring"></div> <!-- Anillo de carga -->
+        <p>Cargando...</p>
+    </div>
+    <h2>Perfil de Usuario</h2>
+    <div class="profile-container">
+        <div class="user-info">
+            <p><span class="icon nombre"></span><strong>Nombre: </strong>  <span class="inf-dat" id="inf-nombre"></span></p>
+            <p><span class="icon apellido"></span><strong>Apellido: </strong> <span class="inf-dat" id="inf-apellido"></span></p>
+            <p><span class="icon correo"></span><strong>Correo: </strong> <span class="inf-dat" id="inf-email"></span></p>
+            <p><span class="icon telefono"></span><strong>Teléfono: </strong> <span class="inf-dat" id="inf-telefono"></span></p>
+            <p><span class="icon semestre"></span><strong>Semestre: </strong> <span class="inf-dat" id="inf-semestre"></span></p>
+        </div>
+
+        <div class="projects">
+            <h3>Proyectos Seleccionados</h3>
+            <div class="project-cards">
+                <div class="project-card">
+                    <h4 id="project1-name">Nombre del Proyecto 1</h4>
+                    <p id="project1-desc">Descripción del Proyecto 1</p>
+                </div>
+                <div class="project-card">
+                    <h4 id="project2-name">Nombre del Proyecto 2</h4>
+                    <p id="project2-desc">Descripción del Proyecto 2</p>
+                </div>
+                <div class="project-card">
+                    <h4 id="project3-name">Nombre del Proyecto 3</h4>
+                    <p id="project3-desc">Descripción del Proyecto 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <button id="cerrar-sesion" class="cerrar-sesion-btn"></button>
+            <button id="editar-perfil" class="editar-perfil-btn"></button>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="#" class="btn" id="change-url-btn">Ver Proyectos</a>
+    </div>
+
+    <!-- Ventana Modal para editar perfil -->
+    <div id="modal-editar-perfil" class="modal">
+        <div class="modal-content">
+            <h3>Editar Perfil</h3>
+            <form id="editar-perfil-form">
+                <label for="editar-nombre">Nombre:</label>
+                <input type="text" id="editar-nombre" name="nombre" required>
+
+                <label for="editar-apellido">Apellido:</label>
+                <input type="text" id="editar-apellido" name="apellido" required>
+
+                <label for="editar-telefono">Teléfono:</label>
+                <div class="telefono-input">
+                    <select id="prefijo-pais" name="prefijo">
+                        <!-- Ejemplos de prefijos -->
+                        <option value="+591">+591 Bolivia</option>
+                        <option value="+54">+54 Argentina</option>
+                        <option value="+57">+57 Colombia</option>
+                        <!-- Agrega más países según sea necesario -->
+                    </select>
+                    <input type="text" id="editar-telefono" name="telefono" placeholder="Número de teléfono" required>
+                </div>
+
+                <label for="editar-semestre">Semestre:</label>
+                <select id="editar-semestre" name="semestre" required>
+                    <option value="1">1er Semestre</option>
+                    <option value="2">2do Semestre</option>
+                    <option value="3">3er Semestre</option>
+                    <option value="4">4to Semestre</option>
+                    <option value="5">5to Semestre</option>
+                    <option value="6">6to Semestre</option>
+                    <option value="7">7mo Semestre</option>
+                    <option value="8">8vo Semestre</option>
+                </select>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="btn">Guardar</button>
+                    <button type="button" class="btn" id="cancelar-edicion">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('change-url-btn').addEventListener('click', function(event) {
+            window.location.href='Proyectos';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+body {
+    background-color: #6B3D52;
+    font-family: 'Montserrat', sans-serif;
+    color: #ECE9E6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6B3D52;
+    z-index: 1000;
+}
+
+#loading-ring {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #6B3D52; /* Darker color */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.profile-container {
+    background-color: #ebe7e4;
+    padding: 20px;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: #000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.profile-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+h2 {
+    color: #ebe7e4;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.user-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: #6B3D52;
+    width: 24px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 24px; /* Ajusta el tamaño del ícono según sea necesario */
+}
+
+.projects {
+    margin-top: 20px;
+}
+
+h3 {
+    color: #6B3D52;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.project-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-card {
+    background-color: #F2F2F2;
+    color: #6B3D52;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.project-card p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ebe7e4; 
+    color: #6B3D52;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #b8949a;
+}
+
+.cerrar-sesion-btn {
+    background-color: #6B3D52;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/logout.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%; 
+    transition: background-color 0.3s ease;
+}
+
+.cerrar-sesion-btn:hover {
+    background-color: #b8949a;
+}
+
+.editar-perfil-btn {
+    background-color: #6B3D52;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/pencil.png'); /* Icono de lápiz */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%; 
+    transition: background-color 0.3s ease;
+}
+
+.editar-perfil-btn:hover {
+    background-color: #b8949a;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #F2F2F2;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: #6B3D52; /* Color de texto */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6B3D52;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6B3D52;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ebe7e4;
+    color: #6B3D52;
+}
+
+.modal-content input[type="email"] {
+    background-color: #ececec; 
+}
+
+.telefono-input {
+    display: flex;
+    gap: 10px;
+}
+
+.user-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.user-info strong {
+    margin-right: 5px; 
+}
+
+.inf-dat {
+    margin-left: 5px;
+}
+
+.telefono-input select {
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ebe7e4;
+    color: #6B3D52;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-buttons #cancelar-edicion {
+    background-color: #fa7b6d; 
+}
+
+.modal-buttons #cancelar-edicion:hover {
+    background-color: #c0392b; 
+}
+
+
+.modal-buttons .btn {
+    background-color: #6B3D52;
+    color: #ebe7e4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 45%;
+}
+
+.modal-buttons .btn:hover {
+    background-color: #b8949a;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icon.nombre {
+    background-image: url('../images/user.png');
+}
+
+.icon.apellido {
+    background-image: url('../images/user-2.png');
+}
+
+.icon.correo {
+    background-image: url('../images/mail.png');
+}
+
+.icon.telefono {
+    background-image: url('../images/phone.png');
+}
+
+.icon.semestre {
+    background-image: url('../images/semester.png');
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

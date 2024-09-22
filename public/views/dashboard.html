@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interactivo</title>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" href="../images/logo_app.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="dashboard">
+        <main class="main-content">
+            <!-- Overview -->
+            <section id="overview" class="section">
+                <div class="cabeza">
+                    <div class="titulazo">
+                        <h1>Resumen General</h1>
+                    </div>
+                    <button id="cerrar-sesion" class="cerrar-sesion-btn"></button>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2>Total Estudiantes Registrados</h2>
+                        <p id="total-projects"></p>
+                    </div>
+                </div>
+            </section>
+            <!-- Project Stats -->
+            
+            
+            <section id="project-stats" class="section">
+                <h1>Estadísticas de Proyectos</h1>
+                <div id="project-chart" class="chart">
+                    <div class="top-content">
+                        <div class="chart-container" id="chart-tipo">
+                            <div id="myChart-legend" class="chart-legend"></div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <div class="chart-container" id="chart-Area">
+                            <div id="myChart1-legend" class="chart-legend"></div>
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                        <div class="chart-container" id="chart-Especialidad">
+                            <div id="myChart2-legend" class="chart-legend"></div>
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                    <div class="filter-charts">
+                        <button id="restart-btn" class="btn">
+                            <i class="fas fa-redo-alt"></i>
+                        </button>
+                        <button id="buscar-btn" class="btn" onclick="scrollToTable()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- Area Stats -->
+            <section id="area-stats" class="section">
+                <h1>Detalles Estudiantes</h1>
+                <div id="area-chart" class="chart">
+                    <div class="inputs-container">
+                        <div class="input-group">
+                            <input type="text" name="Nombre" id="name-find" class="input-text" placeholder="Nombre">
+                            <button id="buscar-nombre-btn" class="buscar-btn"><i class="fas fa-search"></i></button>
+                        </div>
+            
+                        <div class="input-group">
+                            <input type="text" name="Apellido" id="lastname-find" class="input-text" placeholder="Apellido">
+                            <button id="buscar-apellido-btn" class="buscar-btn"><i class="fas fa-search"></i></button>
+                        </div>
+            
+                        <div class="input-group">
+                            <input type="text" name="Nombre-Proyecto" id="proyectname-find" class="input-text" placeholder="Nombre Proyecto">
+                            <button id="buscar-proyecto-btn" class="buscar-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div id="tablaEstudiantes"></div>
+                </div>
+            </section>
+            <!-- User Responses -->
+            <section id="project-details" class="section">
+                <h1>Detalles Proyectos</h1>
+                
+                <!-- Contenedor del botón de agregar y la tabla -->
+                <div class="project-container">
+                    <div class="top-bar" style="justify-content: center; gap: 20px;">
+                        <!-- Botón circular de agregar -->
+                        <button id="add-project-btn" class="circular-btn"><i class="fas fa-plus"></i></button>
+                
+                        <!-- Input de búsqueda de proyectos -->
+                        <div class="input-group">
+                            <input type="text" id="project-search-input" class="input-text" placeholder="Buscar Proyecto">
+                            <button id="search-project-btn" class="buscar-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+            
+                    <!-- Tabla de Proyectos -->
+                    <div id="tablaProyectos">
+                        <table class="project-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Especialidades Requeridas</th>
+                                    <th>Descripción</th>
+                                    <th>Tiempo de Desarrollo</th>
+                                    <th>Tipo de Aplicación</th>
+                                    <th>Área</th>
+                                    <th>Objetivos</th>
+                                    <th>Estado</th>
+                                    <th>Integrantes</th>
+                                    <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
+                                </tr>
+                            </thead>
+                            <tbody id="project-tbody">
+                                <!-- Aquí se insertarán las filas dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <div id="modal-detalles-estudiante-unico" class="modal-unico">
+                <div class="modal-content-unico">
+                    <h3 class="modal-titulo-unico">Detalles del Estudiante</h3>
+                    <form>
+                        <div class="modal-form-group-unico">
+                            <label>Apellido:</label>
+                            <span id="modal-apellido-estudiante-unico"></span>
+                        </div>
+                        <div class="modal-form-group-unico">
+                            <label>Nombre:</label>
+                            <span id="modal-nombre-estudiante-unico"></span>
+                        </div>
+                        <div class="modal-form-group-unico">
+                            <label>Semestre:</label>
+                            <span id="modal-semestre-estudiante-unico"></span>
+                        </div>
+                        <div class="modal-form-group-unico">
+                            <label>Teléfono:</label>
+                            <span id="modal-telefono-estudiante-unico"></span>
+                        </div>
+                        <div class="modal-buttons-unico">
+                            <button type="button" class="btn btn-cerrar-unico" id="cerrar-modal-estudiante-unico">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Ventana Modal para agregar proyecto -->
+            <div id="modal-agregar-proyecto" class="modal">
+                <div class="modal-content">
+                    <h3>Agregar Proyecto</h3>
+                    <form id="agregar-proyecto-form">
+                        <label for="agregar-nombre">Nombre:</label>
+                        <input type="text" id="agregar-nombre" name="nombre" required>
+
+                        <label for="agregar-especialidades">Especialidades Requeridas:</label>
+                        <div id="agregar-especialidades-container" class="especialidades-container">
+                            <!-- Aquí se mostrarán las especialidades como burbujas -->
+                        </div>
+                        <div class="especialidades-selector">
+                            <select id="agregar-especialidades-selector">
+                                <!-- Opciones se llenarán dinámicamente -->
+                            </select>
+                        </div>
+                        <input type="text" id="agregar-especialidades-otro" name="especialidades-otro" placeholder="Especifique otra especialidad" style="display: none;">
+                        
+
+                        <label for="agregar-descripcion">Descripción:</label>
+                        <textarea id="agregar-descripcion" name="descripcion" required></textarea>
+
+                        <label for="agregar-tiempo">Tiempo de Desarrollo:</label>
+                        <input type="text" id="agregar-tiempo" name="tiempo" required>
+
+                        <label for="agregar-tipo">Tipo de Aplicación:</label>
+                        <select id="agregar-tipo" name="tipo" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                        <input type="text" id="agregar-tipo-otro" name="tipo-otro" placeholder="Especifique otro tipo" style="display: none;">
+                        
+                        <label for="agregar-area">Área:</label>
+                        <select id="agregar-area" name="area" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                        <input type="text" id="agregar-area-otro" name="area-otro" placeholder="Especifique otra área" style="display: none;">
+                        
+                        <label for="agregar-objetivos">Objetivos:</label>
+                        <textarea id="agregar-objetivos" name="objetivos" required></textarea>
+
+                        <label for="agregar-estado">Estado:</label>
+                        <input type="text" id="agregar-estado" name="estado" required>
+
+                        <label for="agregar-integrantes">Integrantes:</label>
+                        <input type="number" id="agregar-integrantes" name="integrantes" required>
+
+                        <div class="modal-buttons">
+                            <button type="submit" class="btn">Guardar</button>
+                            <button type="button" class="btn" id="cancelar-agregar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Ventana Modal para editar proyecto -->
+            <div id="modal-editar-proyecto" class="modal">
+                <div class="modal-content">
+                    <h3>Editar Proyecto</h3>
+                    <form id="editar-proyecto-form">
+                        <input type="hidden" id="editar-id">
+
+                        <label for="editar-nombre">Nombre:</label>
+                        <input type="text" id="editar-nombre" name="nombre" required>
+                        
+                        <label for="editar-especialidades">Especialidades Requeridas:</label>
+                        <div id="editar-especialidades-container" class="especialidades-container">
+                            <!-- Aquí se mostrarán las especialidades como burbujas -->
+                        </div>
+                        <div class="especialidades-selector">
+                            <select id="editar-especialidades-selector">
+                                <!-- Opciones se llenarán dinámicamente -->
+                            </select>
+                        </div>
+                        <input type="text" id="editar-especialidades-otro" name="especialidades-otro" placeholder="Especifique otra especialidad" style="display: none;">
+
+                        <label for="editar-descripcion">Descripción:</label>
+                        <textarea id="editar-descripcion" name="descripcion" required></textarea>
+
+                        <label for="editar-tiempo">Tiempo de Desarrollo:</label>
+                        <input type="text" id="editar-tiempo" name="tiempo" required>
+
+                        <label for="editar-tipo">Tipo de Aplicación:</label>
+                        <select id="editar-tipo" name="tipo" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                        <input type="text" id="editar-tipo-otro" name="tipo-otro" placeholder="Especifique otro tipo" style="display: none;">
+                        
+                        <label for="editar-area">Área:</label>
+                        <select id="editar-area" name="area" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                        <input type="text" id="editar-area-otro" name="area-otro" placeholder="Especifique otra área" style="display: none;">
+                        <label for="editar-objetivos">Objetivos:</label>
+                        <textarea id="editar-objetivos" name="objetivos" required></textarea>
+
+                        <label for="editar-estado">Estado:</label>
+                        <input type="text" id="editar-estado" name="estado" required>
+
+                        <label for="editar-integrantes">Integrantes:</label>
+                        <input type="number" id="editar-integrantes" name="integrantes" required>
+
+                        <div class="modal-buttons">
+                            <button type="submit" class="btn">Guardar</button>
+                            <button type="button" class="btn" id="cancelar-editar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    <!-- CUSTOM JS -->
+     <script>
+        function scrollToTable() {
+        document.getElementById('tablaEstudiantes').scrollIntoView({ behavior: 'smooth' });
+        }
+     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../scripts/dashboard.js"></script>
+</body>
+</html>

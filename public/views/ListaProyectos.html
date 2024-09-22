@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escoge tu Proyecto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link  rel="stylesheet" href="../styles/selection-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <script type="module" src="../scripts/project_selection.js"></script>
+    <link rel="icon" href="../images/logo_app.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="loading-container">
+        <div id="loading-ring"></div>
+        <p>Cargando...</p>
+    </div>
+    
+    <div class="title">
+        Escoge tu Proyecto
+    </div>
+    <div class="filtros">
+        <div id="search-bar-container">
+            <input type="search" id="search-input" placeholder="Nombre Proyecto"/>
+        </div>
+        <div id="filter-container">
+            <select id="area-filter" class="dropdown-value">
+            </select>
+            <select id="tipo-filter" class="dropdown-value">
+            </select>
+            <select id="Especialidad-filter" class="dropdown-value">
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        <div class="large-box">
+            <div class="cards-container">
+            </div>
+        </div>
+        <div>
+            <table class="tablaJustificacion" id="tablaJustificacion">
+            </table>
+        </div>
+
+        <!-- Botón Subir -->
+        <div class="container">
+            <button id="scrollUpButton" class="scroll-up-btn">Subir</button>
+        </div>
+    </div>
+    
+    <a href="#tablaJustificacion" class="floating-button"><img src="../images/flechaBlanca-removebg-preview - copia.png" alt=""></a>
+    
+    <!-- Modal para detalles del proyecto -->
+    <div id="project-details-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Detalles del Proyecto</h3>
+            <table class="details-table">
+                <tr>
+                    <td><strong>Descripción:</strong></td>
+                    <td id="project-description">Lorem ipsum dolor sit amet...</td>
+                </tr>
+                <tr>
+                    <td><strong>Objetivos:</strong></td>
+                    <td id="project-objectives">Facilitar la organización de tareas...</td>
+                </tr>
+                <tr>
+                    <td><strong>Estado:</strong></td>
+                    <td id="project-status">Propuesta</td>
+                </tr>
+                <tr>
+                    <td><strong>Tiempo de Desarrollo:</strong></td>
+                    <td id="project-duration">8 semanas</td>
+                </tr>
+                <tr>
+                    <td><strong>Integrantes:</strong></td>
+                    <td id="project-members">4</td>
+                </tr>
+                <tr>
+                    <td><strong>Especialidades Requeridas:</strong></td>
+                    <td id="project-specialties">Backend, Frontend, UI/UX</td>
+                </tr>
+            </table>
+            <button id="select-project" class="submit-btn">Seleccionar</button>
+            <button id="cancel-details" class="cancel-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Justification Modal -->
+    <div id="justification-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>¿Por qué elegiste este proyecto?</h3>
+            <textarea id="justification-text" rows="4"></textarea>
+            <button id="submit-justification" class="submit-btn">Subir</button>
+            <button id="cancel-justification" class="cancel-btn">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>

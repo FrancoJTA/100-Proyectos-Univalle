@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styles/login-styles.css">
+    <script type="module" src="../scripts/app.js"></script>
+    <link rel="icon" href="../images/logo_app.ico" type="image/x-icon">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <h2>Bienvenido</h2>
+                <p>Elije los proyectos que te parezcan mejor</p>
+                <input type="button" value="Iniciar Sesión" id="sign-in">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Crear una Cuenta</h2>
+                    <form class="form form-register" id="registerForm" >
+                    <div>
+                        <label>
+                            <i class='bx bx-user' ></i>
+                            <input type="text" placeholder="Nombre Usuario" id="userName" name="username" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-user' ></i>
+                            <input type="text" placeholder="Apellido Usuario" id="userLastname" name="userlastName" >
+                        </label>
+                    </div>
+                    <div>
+                        <label >
+                            <i class='bx bx-envelope' ></i>
+                            <input type="email" placeholder="Correo Electronico" id="userEmail" name="userEmail"  >
+                        </label>
+                    </div>
+                   <div>
+                        <label>
+                            <i class='bx bx-lock-alt' ></i>
+                            <input type="password" placeholder="Contraseña" id="userPassword" name="userPassword">
+                        </label>
+                   </div>
+                    <input type="submit" value="Registrarse">
+
+                    <a href="#" id="coso" class="help-link">¿Necesitas ayuda para registrarte?</a>
+                    
+                    <div class="alerta-error">Todos los campos son obligatorios</div>
+                    <div class="alerta-exito">Te registraste correctamente</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-form login hide">
+        <div class="information">
+            <div class="info-childs">
+                <h2>Bienvenido nuevamente</h2>
+                <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
+                <input type="button" value="Registrarse" id="sign-up">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Iniciar Sesión</h2>
+                <form class="form form-login"novalidate>
+                    <div>
+                        <label >
+                            <i class='bx bx-envelope' ></i>
+                            <input type="email" placeholder="Correo Electronico" name="userPassword">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt' ></i>
+                            <input type="password" placeholder="Contraseña" name="userPassword">
+                        </label>
+                    </div>
+              
+                    <input type="submit" value="Iniciar Sesión"></a>
+
+                    <a href="#" id="coso" class="help-link">¿Necesitas ayuda con tu cuenta?</a>
+
+                    <div class="alerta-error">Todos los campos son obligatorios</div>
+                    <div class="alerta-exito">Te registraste correctamente</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/login.js"></script>
+    <script>
+        // Selecciona el primer (y único) elemento con la clase 'help-link'
+        const helpLink = document.getElementsByClassName('help-link')[0];
+    
+        // Añadir el event listener al elemento seleccionado
+        helpLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto
+            window.location.href = 'soporte'; // Redireccionar a 'soporte'
+        });
+    </script>
+</body>
+</html>

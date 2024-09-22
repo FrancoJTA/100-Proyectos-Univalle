@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "proyecto1-480d9",
+    "ProyectoGestion": "proyecto1-480d9"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
